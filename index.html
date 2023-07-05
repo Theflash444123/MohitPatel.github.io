@@ -11,6 +11,45 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	<style>
+    .gallery-container {
+      position: relative;
+      height: 400px;
+    }
+
+    .gallery-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .gallery-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-control:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .gallery-control.previous {
+      left: 0;
+    }
+
+    .gallery-control.next {
+      right: 0;
+    }
+  </style>
 	</head>
 	<body class="is-preload">
 
@@ -30,13 +69,13 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo">Massively</a>
+						<a href="index.html" class="logo">PORTFOLIO</a>
 					</header>
 
 				<!-- Nav -->
 					<nav id="nav">
 						<ul class="links">
-							<li class="active"><a href="index.html">This is Massively</a></li>
+							<li class="active"><a href="index.html">PROJECTS</a></li>
 							<li><a href="generic.html">MY JOURNEY TO DATA SCIENCE </a></li>
 							<li><a href="elements.html">Elements Reference</a></li>
 						</ul>
@@ -54,14 +93,37 @@
 						<!-- Featured Post -->
 							<article class="post featured">
 								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
+									<span class="date">M.Sc. Thesis</span>
+									<h2><a href="#">SPOTIFY PLAYLIST CONTINUATION</a></h2>
+									<p>a novel approach to Automatic Playlist Continuation (APC), combining the user-focused strengths of collaborative 
+										filtering and the personalization capabilities of content-based recommendation systems. This harmony creates a <br />
+										tailored music experience that hits the right notes of diversity, relevance, and user satisfaction.<br /></p>
 								</header>
-								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
+								<a href="#" class="image main"><img src="images/APC.png" alt="" /></a>
+
+								 <div class="gallery-container">
+    								<img class="gallery-image" src="images/APC.png" alt="Image 1">
+    								<img class="gallery-image" src="images/CalApp_FlowChart.png" alt="Image 2">
+    								<img class="gallery-image" src="images/APC.png" alt="Image 3">
+    								<!-- Add more image tags here as needed -->
+    								<div class="gallery-control previous" onclick="previousImage()">&lt;</div>
+    								<div class="gallery-control next" onclick="nextImage()">&gt;</div>
+  								</div>
+
+								<ul class="actions special">
+									<li><a href="#" class="button large">Full Story</a></li>
+								</ul>
+							</article>
+
+							<article class="post featured">
+								<header class="major">
+									<span class="date">M.Sc. Thesis</span>
+									<h2><a href="#">Engine AnalytiX</a></h2>
+									<p>a novel approach to Automatic Playlist Continuation (APC), combining the user-focused strengths of collaborative 
+										filtering and the personalization capabilities of content-based recommendation systems. This harmony creates a <br />
+										tailored music experience that hits the right notes of diversity, relevance, and user satisfaction.<br /></p>
+								</header>
+								<a href="#" class="image main"><img src="images/CalApp_FlowChart.png" alt="" /></a>
 								<ul class="actions special">
 									<li><a href="#" class="button large">Full Story</a></li>
 								</ul>
@@ -224,6 +286,39 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    let currentIndex = 0;
+
+    function showImage(index) {
+      galleryImages.forEach((image, i) => {
+        if (i === index) {
+          image.style.opacity = '1';
+        } else {
+          image.style.opacity = '0';
+        }
+      });
+    }
+
+    function nextImage() {
+      currentIndex++;
+      if (currentIndex >= galleryImages.length) {
+        currentIndex = 0;
+      }
+      showImage(currentIndex);
+    }
+
+    function previousImage() {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = galleryImages.length - 1;
+      }
+      showImage(currentIndex);
+    }
+
+    setInterval(nextImage, 3000); // Transition to the next image every 3 seconds
+  </script>
 
 	</body>
 </html>
